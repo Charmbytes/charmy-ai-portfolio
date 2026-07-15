@@ -1,5 +1,7 @@
 # Charmy Dhawan — AI-Powered Portfolio
 
+**🌐 Live demo → [charmy-ai-portfolio-uxbg.vercel.app](https://charmy-ai-portfolio-uxbg.vercel.app/)**
+
 An interactive portfolio where visitors don't just read a resume — they **ask questions**. An AI assistant, grounded in a local knowledge base built from my actual resume, answers questions about my background, skills, projects, experience, education, and contact details.
 
 ## Features
@@ -80,4 +82,4 @@ Edit content or add sections — retrieval and the AI prompt pick them up automa
 
 ---
 
-Built by [Charmy Dhawan](https://github.com/Charmbytes) · charmydhawan@gmail.com
+Built by [Charmy Dhawan](https://github.com/Charmbytes) · charmydhawan@gmail.com · [Live site](https://charmy-ai-portfolio-uxbg.vercel.app/)
