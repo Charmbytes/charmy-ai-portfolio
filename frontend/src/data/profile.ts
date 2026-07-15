@@ -15,9 +15,10 @@ export const PROJECTS: Project[] = [
   {
     name: "LLM Task Automation Agent",
     repo: "llm-agent",
-    tags: ["LangChain", "LangGraph", "Python"],
+    url: "https://github.com/Charmbytes/llm-agent",
+    tags: ["LangChain", "LangGraph", "Streamlit"],
     description:
-      "Agentic task automation built from scratch on LangChain 1.x + LangGraph: a graph-based agent loop orchestrating nine tools, including sandboxed file I/O, to plan and execute multi-step tasks safely.",
+      "Streamlit chat UI backed by a LangGraph agent loop orchestrating 9 tools: real DuckDuckGo search, live weather, safe AST calculator, mock email/calendar, and sandboxed file I/O — with SQLite session memory and live tool-call streaming.",
   },
   {
     name: "AI Job Hunter",
@@ -121,7 +122,7 @@ const LOCAL_ANSWERS: { keywords: string[]; answer: string }[] = [
   {
     keywords: ["project", "built", "build", "portfolio", "work on", "repos", "github"],
     answer:
-      "Charmy's headline projects: the LLM Task Automation Agent (LangChain + LangGraph, nine tools), AI Job Hunter (skill-fit job aggregation), a Robotic Arm Motion Simulator (Python kinematics + Three.js), Biker NFC Tag (emergency medical ID), FactSure (AI misinformation detection, Mumbai Hacks), and this AI Portfolio — you're talking to it right now! Scroll down for details on each.",
+      "Charmy's headline projects: the LLM Task Automation Agent (Streamlit UI + LangChain/LangGraph, 9 live tools including real web search and weather), AI Job Hunter (skill-fit job aggregation), a Robotic Arm Motion Simulator (Python kinematics + Three.js), Biker NFC Tag (emergency medical ID), FactSure (AI misinformation detection, Mumbai Hacks), and this AI Portfolio — you're talking to it right now! Scroll down for details on each.",
   },
   {
     keywords: ["skill", "stack", "tech", "language", "python", "framework"],
@@ -147,6 +148,11 @@ const LOCAL_ANSWERS: { keywords: string[]; answer: string }[] = [
     keywords: ["who", "about", "background", "yourself", "charmy", "hi", "hello", "hey"],
     answer:
       "Charmy Dhawan is an IT engineering student in Mumbai and an AI & Automation Engineer intern at Larsen & Toubro, building agentic AI systems and backend services. Ask me about projects, skills, experience, education, or contact details!",
+  },
+  {
+    keywords: ["llm", "agent", "automation", "langchain", "langgraph", "streamlit", "groq"],
+    answer:
+      "The LLM Task Automation Agent is a Streamlit chat app powered by a LangGraph agent loop: you give it a plain-English goal and it plans and executes tool calls — real DuckDuckGo web search, live weather via wttr.in, a safe math calculator, mock email & calendar, and sandboxed file I/O. Tool calls stream live in the UI, and SQLite stores memory across sessions. Built with LangChain 1.x, LangGraph, and Groq. Check it out on GitHub: github.com/Charmbytes/llm-agent",
   },
 ];
 
