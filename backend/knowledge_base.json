@@ -1,0 +1,95 @@
+{
+  "profile": {
+    "name": "Charmy Dhawan",
+    "title": "AI & Automation Engineer · IT Engineering Student",
+    "location": "Andheri (W), Mumbai, India",
+    "email": "charmydhawan@gmail.com",
+    "github": "https://github.com/Charmbytes",
+    "linkedin": "https://www.linkedin.com/in/charmy-dhawan-a3969626b",
+    "tagline": "I build agentic AI systems, backend services, and automation tools — the kind of projects that force me to learn something new along the way."
+  },
+  "sections": [
+    {
+      "id": "about",
+      "title": "About",
+      "keywords": ["about", "who", "background", "summary", "yourself", "intro", "introduction", "bio", "charmy", "overview", "general"],
+      "content": "Charmy Dhawan is an Information Technology engineering student at Thadomal Shahani Engineering College, Mumbai (2023-2027), currently working as an AI and Automation Engineer intern at Larsen & Toubro. Charmy's work centers on AI/ML, agentic systems built with LangChain and LangGraph, and backend engineering with Python, FastAPI, and relational databases. Charmy is always chasing the next challenging build — the kind that forces learning something new along the way — and is preparing for M.Tech applications with a focus on AI/ML and databases/backend systems."
+    },
+    {
+      "id": "projects-overview",
+      "title": "Projects Overview",
+      "keywords": ["projects", "project", "built", "build", "builds", "made", "created", "create", "developed", "develop", "portfolio", "showcase", "list", "all", "done", "written", "work"],
+      "content": "Charmy has built six notable projects: (1) LLM Task Automation Agent — a LangChain/LangGraph agentic system orchestrating nine tools for multi-step task automation, Charmy's flagship AI project; (2) AI Job Hunter — a local AI-powered job and internship aggregator with fuzzy skills-alignment ranking and a Flask dashboard; (3) Robotic Arm Motion Simulator — a Python kinematics engine (2D CCD + 3D DH-parameter/Jacobian IK) paired with an interactive Three.js frontend; (4) Biker NFC Tag — an emergency medical ID system for riders via QR/NFC scanning; (5) FactSure — an AI misinformation detection platform built at Mumbai Hacks hackathon, where Charmy contributed the claim, URL, and image verification agents plus the Chrome extension; (6) This AI Portfolio — the very site you're on right now, built by Charmy with React, TypeScript, Vite, FastAPI, and the Groq API — I am the assistant you're speaking with."
+    },
+    {
+      "id": "education",
+      "title": "Education",
+      "keywords": ["education", "college", "degree", "university", "study", "studies", "school", "mtech", "m.tech", "engineering", "student", "graduate", "graduation", "thadomal"],
+      "content": "Charmy is pursuing a B.E. in Information Technology at Thadomal Shahani Engineering College, Mumbai (2023-2027). Charmy is also actively preparing applications for M.Tech programs, with core technical interests in AI/Machine Learning and databases/backend systems."
+    },
+    {
+      "id": "experience",
+      "title": "Work Experience",
+      "keywords": ["experience", "work", "job", "internship", "intern", "employer", "company", "larsen", "toubro", "l&t", "3diotec", "robotics", "viral", "fission", "career", "professional"],
+      "content": "Charmy's work experience: (1) AI and Automation Engineer, Larsen & Toubro (Jun 2026 - Aug 2026) — building AI and automation solutions, including work on an internal HR feedback platform with a stack spanning FastAPI-style Python services, PostgreSQL, Redis, Azure Blob Storage, Keycloak, SAP SuccessFactors integration, and Docker Compose; designed a bulk employee report download feature end to end. (2) Robotics Engineer, 3diotec (Jan 2026 - May 2026) — robotics engineering projects involving 3D printing and SolidWorks-based design and prototyping. (3) Marketing Team Lead & Customer Relations Intern, Viral Fission (Jul 2020 - Jul 2022) — executed digital marketing strategies for customer acquisition and retention while managing client communication."
+    },
+    {
+      "id": "project-llm-agent",
+      "title": "Project: LLM Task Automation Agent",
+      "keywords": ["llm", "agent", "langchain", "langgraph", "automation", "task", "agentic", "tools", "project", "built", "build"],
+      "content": "LLM Task Automation Agent (llm-agent): an agentic task automation system built from scratch with LangChain 1.x and LangGraph. It orchestrates nine tools — including sandboxed file I/O — through a graph-based agent loop, letting a language model plan and execute multi-step tasks safely. This is Charmy's flagship AI/agentic-systems project."
+    },
+    {
+      "id": "project-ai-jobhunter",
+      "title": "Project: AI Job Hunter",
+      "keywords": ["job", "jobhunter", "hunter", "internship", "listings", "fit", "matching", "ranking", "search", "project", "built", "build"],
+      "content": "AI Job Hunter (ai-jobhunter, Python): a local AI-powered job and internship hunter that aggregates listings from pluggable sources (such as Adzuna and Remotive), ranks them by fit against Charmy's skill profile using fuzzy skills-alignment matching, and provides a rich CLI plus a Flask dashboard for reviewing, saving searches, and tracking applications."
+    },
+    {
+      "id": "project-arm-simulator",
+      "title": "Project: Robotic Arm Motion Simulator",
+      "keywords": ["robotic", "arm", "simulator", "kinematics", "ik", "inverse", "three.js", "threejs", "ccd", "jacobian", "dh", "project", "built", "build"],
+      "content": "Robotic Arm Motion Simulator (robotic-arm-simulator): a robotic arm motion simulator combining a Python kinematics engine — 2D CCD inverse kinematics plus 3D DH-parameter/Jacobian-based IK — with an interactive Three.js/canvas frontend for visualizing arm motion in real time."
+    },
+    {
+      "id": "project-biker-nfc",
+      "title": "Project: Biker NFC Tag",
+      "keywords": ["biker", "nfc", "tag", "helmet", "medical", "emergency", "qr", "rider", "project", "built", "build"],
+      "content": "Biker NFC Tag (biker-nfc-tag): an emergency medical ID system for riders — scanning a QR code or NFC tag on a helmet instantly surfaces the rider's blood group, allergies, and medical history to first responders."
+    },
+    {
+      "id": "project-factsure",
+      "title": "Project: FactSure (Mumbai Hacks)",
+      "keywords": ["factsure", "misinformation", "hackathon", "mumbai", "hacks", "verification", "fact", "chrome", "extension", "project", "built", "build"],
+      "content": "FactSure (Mumbai Hacks hackathon): an AI-powered misinformation detection platform. Charmy contributed to the claim, URL, and image verification agents and the Chrome extension."
+    },
+    {
+      "id": "project-portfolio",
+      "title": "Project: AI Portfolio",
+      "keywords": ["portfolio", "this site", "this website", "this portfolio", "yourself", "you", "what are you", "who are you", "this", "website", "site", "project", "built", "build", "react", "vite", "groq", "fastapi"],
+      "content": "I am the AI Portfolio — the very project you're interacting with right now. Charmy built me using React, TypeScript, and Vite on the frontend, with FastAPI on the backend and the Groq API (llama-3.3-70b-versatile model) powering my conversational responses. My knowledge base uses keyword-scored retrieval to ground my answers in Charmy's actual experience. The visual design features a WebGL fluid simulation background (webgl-fluid-enhanced), a dark theme, and a section-switching single-page architecture. I exist to showcase Charmy's work and let visitors ask natural-language questions about Charmy's skills, projects, and background — rather than just reading a static page."
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "keywords": ["skills", "skill", "stack", "technologies", "tech", "languages", "programming", "python", "java", "typescript", "sql", "tools", "frameworks", "libraries", "databases", "docker", "know"],
+      "content": "Languages: Python (preferred), Java, JavaScript/TypeScript, SQL. AI/ML & Agentic Systems: LangChain, LangGraph, scikit-learn, NumPy, Pandas; working exposure to TensorFlow, PyTorch, Hugging Face, and OpenCV. Backend: FastAPI, Flask, REST API design. Databases & Infra: PostgreSQL, MySQL, Redis, Azure Blob Storage, Keycloak, Docker & Docker Compose, Git/GitHub. Other: SolidWorks and 3D-printing workflows from robotics work."
+    },
+    {
+      "id": "leadership",
+      "title": "Leadership & Community",
+      "keywords": ["leadership", "community", "volunteer", "volunteering", "rotaract", "club", "soft", "extracurricular", "activities"],
+      "content": "Charmy is an active member of the GENZ Rotaract Club of Parleshwar and has volunteered in stage operations for community events, alongside earlier team-lead experience managing customer relations at Viral Fission."
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "keywords": ["contact", "email", "reach", "hire", "connect", "linkedin", "github", "collaborate", "recruit", "message"],
+      "content": "You can reach Charmy at charmydhawan@gmail.com, on LinkedIn at linkedin.com/in/charmy-dhawan-a3969626b, or on GitHub at github.com/Charmbytes. Charmy is based in Andheri (W), Mumbai, and is open to AI/ML and backend engineering opportunities, collaborations, and M.Tech-related conversations."
+    }
+  ],
+  "fallback_responses": {
+    "greeting": "Hi! I'm Charmy's AI assistant. Ask me about Charmy's projects, skills, work experience, education, or how to get in touch.",
+    "unknown": "I don't have that in Charmy's knowledge base yet. I can tell you about Charmy's background, projects (like the LLM Task Automation Agent or AI Job Hunter), skills, work experience at Larsen & Toubro and 3diotec, education, or contact details."
+  }
+}
