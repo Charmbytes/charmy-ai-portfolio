@@ -297,7 +297,7 @@ function ProjectsSection({ page, setPage }: { page: number; setPage: (p: number)
           <a
             key={p.repo}
             className="project-card"
-            href={`${PROFILE.github}/${p.repo}`}
+            href={p.url ?? `${PROFILE.github}/${p.repo}`}
             target="_blank"
             rel="noreferrer"
             style={{ background: CARD_GRADIENTS[(page * perPage + i) % CARD_GRADIENTS.length] }}

@@ -50,6 +50,7 @@ export const PROJECTS: Project[] = [
   {
     name: "AI Portfolio (this site)",
     repo: "charmy-ai-portfolio",
+    url: "https://charmy-ai-portfolio-uxbg.vercel.app/",
     tags: ["React", "TypeScript", "FastAPI", "Groq"],
     description:
       "You're looking at me right now. An AI-powered portfolio with a Groq-backed conversational assistant, keyword-scored knowledge base retrieval, WebGL fluid simulation, and a section-switching SPA.",

@@ -14,6 +14,7 @@ export interface Project {
   repo: string;
   tags: string[];
   description: string;
+  url?: string;
 }
 
 export interface Experience {
