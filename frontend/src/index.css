@@ -313,6 +313,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .typing-dots span { animation: none; opacity: 0.5; }
 }
 
+.cursor-blink {
+  display: inline-block;
+  margin-left: 1px;
+  color: #444;
+  animation: blink 1s step-end infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink { animation: none; opacity: 0.6; }
+}
+
 /* ── me section ── */
 .section-me {
   display: flex;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { sendChat } from "../api";
+import { streamChat } from "../api";
 import type { ChatTurn } from "../types";
 
 const SUGGESTIONS = [
@@ -19,11 +19,16 @@ export default function Chat() {
   const [turns, setTurns] = useState<ChatTurn[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [streaming, setStreaming] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [turns, busy]);
+
+  // Cancel any in-flight stream if the component unmounts mid-response.
+  useEffect(() => () => abortRef.current?.abort(), []);
 
   async function ask(text: string) {
     const message = text.trim();
@@ -32,12 +37,39 @@ export default function Chat() {
     setTurns((t) => [...t, { role: "user", content: message }]);
     setInput("");
     setBusy(true);
-    try {
-      const res = await sendChat(message, history);
-      setTurns((t) => [...t, { role: "assistant", content: res.reply }]);
-    } finally {
-      setBusy(false);
-    }
+
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    // Placeholder assistant turn we'll append tokens into as they arrive.
+    let assistantIndex = -1;
+    setTurns((t) => {
+      assistantIndex = t.length;
+      return [...t, { role: "assistant", content: "" }];
+    });
+
+    await streamChat(
+      message,
+      history,
+      {
+        onDelta: (delta) => {
+          setStreaming(true);
+          setTurns((t) => {
+            const next = [...t];
+            next[assistantIndex] = {
+              ...next[assistantIndex],
+              content: next[assistantIndex].content + delta,
+            };
+            return next;
+          });
+        },
+        onDone: () => setStreaming(false),
+      },
+      controller.signal,
+    );
+
+    setStreaming(false);
+    setBusy(false);
   }
 
   return (
@@ -53,10 +85,15 @@ export default function Chat() {
         {turns.map((t, i) => (
           <div key={i} className={`msg msg-${t.role}`}>
             <span className="msg-tag">{t.role === "user" ? "you" : "ai"}</span>
-            <p>{t.content}</p>
+            <p>
+              {t.content}
+              {busy && streaming && i === turns.length - 1 && t.role === "assistant" && (
+                <span className="cursor-blink">▍</span>
+              )}
+            </p>
           </div>
         ))}
-        {busy && (
+        {busy && !streaming && (
           <div className="msg msg-assistant">
             <span className="msg-tag">ai</span>
             <p className="typing">

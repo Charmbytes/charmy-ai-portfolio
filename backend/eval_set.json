@@ -1,0 +1,23 @@
+[
+  {"question": "what internship is charmy doing right now", "expected": "experience"},
+  {"question": "where does charmy currently work", "expected": "experience"},
+  {"question": "tell me about the llm agent project", "expected": "project-llm-agent"},
+  {"question": "what does the ai job hunter do", "expected": "project-ai-jobhunter"},
+  {"question": "tell me about the robotic arm project", "expected": "project-arm-simulator"},
+  {"question": "what is the biker nfc tag", "expected": "project-biker-nfc"},
+  {"question": "tell me about factsure", "expected": "project-factsure"},
+  {"question": "what is this website built with", "expected": "project-portfolio"},
+  {"question": "how were you built", "expected": "project-portfolio"},
+  {"question": "what programming languages does charmy know", "expected": "skills"},
+  {"question": "does charmy know pytorch", "expected": "skills"},
+  {"question": "what databases has charmy worked with", "expected": "skills"},
+  {"question": "where did charmy study", "expected": "education"},
+  {"question": "what college does charmy go to", "expected": "education"},
+  {"question": "is charmy involved in any clubs", "expected": "leadership"},
+  {"question": "does charmy volunteer anywhere", "expected": "leadership"},
+  {"question": "how can I contact charmy", "expected": "contact"},
+  {"question": "what is charmy's email", "expected": "contact"},
+  {"question": "who is charmy", "expected": "about"},
+  {"question": "give me an overview of charmy's background", "expected": "about"},
+  {"question": "what projects has charmy built", "expected": "projects-overview"}
+]
