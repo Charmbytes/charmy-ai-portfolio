@@ -9,7 +9,7 @@ type Msg = { q: string; reply: string };
 
 const NAV: { id: Exclude<Section, "hero">; label: string; q: string }[] = [
   { id: "me",         label: "Me",         q: "Tell me about yourself."       },
-  { id: "projects",   label: "Projects",   q: "Show me your projects."        },
+  { id: "projects",   label: "Projects",   q: "What projects has Charmy built?"  },
   { id: "experience", label: "Experience", q: "What's your work experience?"  },
   { id: "skills",     label: "Skills",     q: "What are your skills?"         },
   { id: "contact",    label: "Contact",    q: "How can I contact you?"        },

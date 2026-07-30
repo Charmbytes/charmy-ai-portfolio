@@ -142,7 +142,7 @@ _retriever = TfidfRetriever(KB["sections"])
 
 
 def retrieve(query: str, top_k: int = 3) -> list[dict]:
-    return _retriever.retrieve(query, top_k=top_k)
+    return _retriever.retrieve(query, top_k=top_k, min_score=0.01)
 
 
 # ---------------------------------------------------------------------------
