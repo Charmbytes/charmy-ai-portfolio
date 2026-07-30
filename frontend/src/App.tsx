@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect, Fragment } from "react";
 import FluidCursor from "./components/FluidCursor";
-import { sendChat } from "./api";
+import { streamChat } from "./api";
 import type { ChatTurn } from "./types";
 import { PROFILE, PROJECTS, EXPERIENCE, SKILLS, EDUCATION } from "./data/profile";
 
@@ -17,7 +17,7 @@ const NAV: { id: Exclude<Section, "hero">; label: string; q: string }[] = [
 
 const STATIC_REPLIES: Record<Exclude<Section, "hero">, string> = {
   me:         "You can see a quick summary of Charmy's background above. Ask about projects, skills, experience, or how to get in touch!",
-  projects:   "Here are Charmy's highlighted projects — each links to GitHub. Ask about any specific one for more details.",
+  projects:   "Here are Charmy's highlighted projects — click any card to explore, or ask me about a specific one!",
   experience: "Here's Charmy's work experience. Ask for details on any role!",
   skills:     "Here's Charmy's full skills breakdown. Feel free to ask about any technology!",
   contact:    "You can reach Charmy through the contact info above. Feel free to message anytime!",
@@ -72,13 +72,20 @@ function NavIcon({ id }: { id: string }) {
 export default function App() {
   const [section, setSection]   = useState<Section>("hero");
   const [sectionLog, setSectionLog] = useState<Record<string, Msg[]>>({});
-  const [pendingQ, setPendingQ] = useState("");
-  const [history, setHistory]   = useState<ChatTurn[]>([]);
-  const [input, setInput]       = useState("");
-  const [busy, setBusy]         = useState(false);
+  const [pendingQ, setPendingQ]   = useState("");
+  const [streamReply, setStreamReply] = useState("");
+  const [history, setHistory]     = useState<ChatTurn[]>([]);
+  const [input, setInput]         = useState("");
+  const [busy, setBusy]           = useState(false);
   const [projectPage, setProjectPage] = useState(0);
   const [phIdx, setPhIdx]       = useState(0);
   const bottomRef               = useRef<HTMLDivElement>(null);
+
+  // Warm up the backend on page load so it's awake by the time the user opens chat
+  useEffect(() => {
+    const base = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+    fetch(`${base}/api/health`).catch(() => {});
+  }, []);
 
   // Cycle hero input placeholder
   useEffect(() => {
@@ -86,38 +93,42 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
-  // Scroll to bottom when new messages arrive
+  // Scroll to bottom when new messages arrive or streaming starts/ends
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [sectionLog, pendingQ, busy]);
+  }, [sectionLog, pendingQ, busy, !!streamReply]);
 
   const navigate = useCallback(async (q: string, target?: Exclude<Section, "hero">) => {
     if (busy) return;
     setInput("");
     setPendingQ(q);
+    setStreamReply("");
     setBusy(true);
     if (target) setSection(target);
 
-    try {
-      const res = await sendChat(q, history);
-      const dest = target ?? detectSection(q, res.grounded_on);
-      setSection(dest);
-      setSectionLog(prev => ({
-        ...prev,
-        [dest]: [...(prev[dest] ?? []), { q, reply: res.reply }],
-      }));
-      setHistory(h => [...h, { role: "user", content: q }, { role: "assistant", content: res.reply }]);
-    } catch {
-      const dest = target ?? "me";
-      setSection(dest);
-      setSectionLog(prev => ({
-        ...prev,
-        [dest]: [...(prev[dest] ?? []), { q, reply: STATIC_REPLIES[dest] }],
-      }));
-    } finally {
-      setPendingQ("");
-      setBusy(false);
-    }
+    let finalReply = "";
+    let finalGrounded: string[] = [];
+
+    await streamChat(q, history, {
+      onMeta: (groundedOn) => { finalGrounded = groundedOn; },
+      onDelta: (text) => {
+        finalReply += text;
+        setStreamReply(r => r + text);
+      },
+      onDone: () => {
+        const dest = target ?? detectSection(q, finalGrounded);
+        const reply = finalReply || STATIC_REPLIES[dest];
+        setSection(dest);
+        setSectionLog(prev => ({
+          ...prev,
+          [dest]: [...(prev[dest] ?? []), { q, reply }],
+        }));
+        setHistory(h => [...h, { role: "user", content: q }, { role: "assistant", content: reply }]);
+        setPendingQ("");
+        setStreamReply("");
+        setBusy(false);
+      },
+    });
   }, [busy, history]);
 
   const submit = useCallback(() => {
@@ -233,9 +244,12 @@ export default function App() {
           </Fragment>
         ))}
 
-        {/* Current pending question */}
+        {/* Current pending question + streaming reply */}
         {pendingQ && <div className="bubble-user">{pendingQ}</div>}
-        {busy     && <div className="typing-dots"><span/><span/><span/></div>}
+        {streamReply
+          ? <div className="bubble-ai">{streamReply}</div>
+          : busy && <div className="typing-dots"><span/><span/><span/></div>
+        }
 
         {/* Section content renders below the chat */}
         <div className="section-anim" key={section}>
